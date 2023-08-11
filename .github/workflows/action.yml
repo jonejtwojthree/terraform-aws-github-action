@@ -13,6 +13,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Check out code
+        run: pwd
+
+      - name: Check out code
         uses: actions/checkout@v3
 
       - uses: hashicorp/setup-terraform@v2
@@ -24,6 +27,9 @@ jobs:
         id: fmt
         run: terraform fmt -recursive -check
         continue-on-error: true
+
+      - name: Check out code
+        run: ls -al
 
       - name: Terraform init
         id: init
