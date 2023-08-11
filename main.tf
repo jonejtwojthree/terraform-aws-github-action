@@ -1,6 +1,6 @@
 terraform {
   cloud {
-    organization = "<MY-ORG>"
+    organization = "git-action-jw"
     hostname     = "app.terraform.io" # default
 
     workspaces {
@@ -31,7 +31,7 @@ resource "aws_vpc" "hashicat" {
 
   tags = {
     name        = "${var.prefix}-vpc-${var.region}"
-    environment = "Production"
+    environment = var.environment
   }
 }
 
@@ -40,7 +40,7 @@ resource "aws_subnet" "hashicat" {
   cidr_block = var.subnet_prefix
 
   tags = {
-    name = "${var.prefix}-subnet"
+    name = "${var.prefix}-${var.region}"
   }
 }
 
